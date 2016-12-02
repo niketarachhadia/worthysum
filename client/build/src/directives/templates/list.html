@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="row card card-content teal lighten-2" ng-repeat="item in itemList track by $index">
+		<div class="col s10 m10 l10">
+			<item type={{item.type}} sub-type={{item.subType}} item="item"/>
+		</div>
+		<div class="col s2 m2 l2">
+			<item-action/>
+		</div>
+	</div>
+	
+</div>

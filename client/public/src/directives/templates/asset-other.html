@@ -1,0 +1,31 @@
+<div ng-if="item.mode!='edit'">
+	<div class="col s6 m4 l4">
+		Asset:{{item.desc}}
+	</div>
+	<div class="col s2 m4 l4">
+		Borrower:{{item.entity}}
+	</div>
+	<div class="col s4 m4 l4">
+		Amount: {{item.amount}}
+	</div>
+</div>
+<div ng-if="item.mode=='edit'">
+	<div class="col s6 m4 l4">
+		<div class="input-field orange">
+          <input id="item-desc" type="text" class="validate" ng-model="item.desc">
+          <label for="item-desc">Description</label>
+        </div>
+	</div>
+	<div class="col s2 m4 l4">
+		<div class="input-field orange">
+          <input id="item-borrower" type="text" class="validate" ng-model="item.entity">
+          <label for="item-borrower">Borrower</label>
+        </div>
+	</div>
+	<div class="col s4 m4 l4">
+		<div class="input-field orange">
+          <input id="item-amount" type="text" class="validate" ng-model="item.amount">
+          <label for="item-amount">Amount</label>
+        </div>
+	</div>
+</div>

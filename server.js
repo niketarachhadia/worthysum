@@ -9,6 +9,7 @@ import config from './config';
 
 let server;
 function runServer(callback){
+	console.log('DEBUG DEBUG connect to db: ' + config.DATABASE_URL);
 	mongoose.connect(config.DATABASE_URL, (err)=>{
 		if(err && callback){
 			return callback(err);

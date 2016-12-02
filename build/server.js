@@ -82,6 +82,7 @@
 	
 	var server = void 0;
 	function runServer(callback) {
+		console.log('DEBUG DEBUG connect to db: ' + _config2.default.DATABASE_URL);
 		_mongoose2.default.connect(_config2.default.DATABASE_URL, function (err) {
 			if (err && callback) {
 				return callback(err);
@@ -820,15 +821,15 @@
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	     value: true
+	  value: true
 	});
-	exports.default = { DATABASE_URL: process.env.DATABASE_URL || global.DATABASE_URL || (process.env.NODE_ENV === 'production' ? 'mongodb://test:test@ds119768.mlab.com:19768/worthysum-mlab' : 'mongodb://localhost/worthysum-dev'),
-	     PORT: process.env.PORT || 3001
+	exports.default = { DATABASE_URL: 'mongodb://test:test@ds119768.mlab.com:19768/worthysum-mlab',
+	  PORT: process.env.PORT || 3001
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
 /* 20 */

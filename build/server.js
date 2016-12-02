@@ -44,37 +44,37 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(console, module) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(console, process, module) {'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	
-	var _express = __webpack_require__(6);
+	var _express = __webpack_require__(7);
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _mongoose = __webpack_require__(7);
+	var _mongoose = __webpack_require__(8);
 	
 	var _mongoose2 = _interopRequireDefault(_mongoose);
 	
-	var _bodyParser = __webpack_require__(8);
+	var _bodyParser = __webpack_require__(9);
 	
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 	
-	var _bcryptjs = __webpack_require__(9);
+	var _bcryptjs = __webpack_require__(10);
 	
 	var _bcryptjs2 = _interopRequireDefault(_bcryptjs);
 	
-	var _userModel = __webpack_require__(10);
+	var _userModel = __webpack_require__(11);
 	
 	var _userModel2 = _interopRequireDefault(_userModel);
 	
-	var _passport = __webpack_require__(15);
+	var _passport = __webpack_require__(16);
 	
 	var _passport2 = _interopRequireDefault(_passport);
 	
-	var _config = __webpack_require__(19);
+	var _config = __webpack_require__(20);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
@@ -87,7 +87,7 @@
 			if (err && callback) {
 				return callback(err);
 			}
-	
+			console.log('Debug debug port from environmet: ' + process.env.PORT);
 			server = app.listen(_config2.default.PORT, function () {
 				console.log('Listening on localhost:' + _config2.default.PORT);
 				if (callback) {
@@ -360,7 +360,7 @@
 	});
 	
 	exports.default = app;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(5)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(5), __webpack_require__(6)(module)))
 
 /***/ },
 /* 1 */
@@ -475,364 +475,6 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	module.exports = require("express");
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	module.exports = require("mongoose");
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	module.exports = require("body-parser");
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	module.exports = require("bcryptjs");
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _mongoose = __webpack_require__(7);
-	
-	var _mongoose2 = _interopRequireDefault(_mongoose);
-	
-	var _bcryptjs = __webpack_require__(9);
-	
-	var _bcryptjs2 = _interopRequireDefault(_bcryptjs);
-	
-	var _networthModel = __webpack_require__(11);
-	
-	var _networthModel2 = _interopRequireDefault(_networthModel);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var UserSchema = new _mongoose2.default.Schema({
-	    username: {
-	        type: String,
-	        required: true,
-	        unique: true
-	    },
-	    firstname: {
-	        type: String,
-	        required: false,
-	        unique: false
-	    },
-	    lastname: {
-	        type: String,
-	        required: false,
-	        unique: false
-	    },
-	    password: {
-	        type: String,
-	        required: true
-	    },
-	    currentNetworth: [_networthModel2.default],
-	    netWorth: [{
-	        year: Number,
-	        month: Number,
-	        details: [_networthModel2.default]
-	    }]
-	});
-	
-	UserSchema.methods.validatePassword = function (password, callback) {
-	    _bcryptjs2.default.compare(password, this.password, function (err, isValid) {
-	        if (err) {
-	            callback(err);
-	            return;
-	        }
-	        callback(null, isValid);
-	    });
-	};
-	
-	var User = _mongoose2.default.model('User', UserSchema);
-	
-	exports.default = User;
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _mongoose = __webpack_require__(7);
-	
-	var _mongoose2 = _interopRequireDefault(_mongoose);
-	
-	var _liabilityModel = __webpack_require__(12);
-	
-	var _liabilityModel2 = _interopRequireDefault(_liabilityModel);
-	
-	var _assetModel = __webpack_require__(13);
-	
-	var _assetModel2 = _interopRequireDefault(_assetModel);
-	
-	var _statsModel = __webpack_require__(14);
-	
-	var _statsModel2 = _interopRequireDefault(_statsModel);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var NetworthSchema = new _mongoose2.default.Schema({
-		liabilities: [_liabilityModel2.default],
-		assets: [_assetModel2.default],
-		stats: [_statsModel2.default]
-	});
-	
-	var Networth = _mongoose2.default.model('Networth', NetworthSchema);
-	
-	exports.default = NetworthSchema;
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	       value: true
-	});
-	
-	var _mongoose = __webpack_require__(7);
-	
-	var _mongoose2 = _interopRequireDefault(_mongoose);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var LiabilitySchema = new _mongoose2.default.Schema({
-	       type: {
-	              type: String,
-	              required: false
-	       },
-	       description: {
-	              type: String,
-	              required: false,
-	              unique: false
-	       },
-	       remaining_amount: {
-	              type: Number,
-	              required: false,
-	              unique: false
-	       },
-	       index: {
-	              type: Number,
-	              required: true,
-	              unique: true
-	       }
-	});
-	
-	var Liability = _mongoose2.default.model('Liability', LiabilitySchema);
-	
-	exports.default = LiabilitySchema;
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	       value: true
-	});
-	
-	var _mongoose = __webpack_require__(7);
-	
-	var _mongoose2 = _interopRequireDefault(_mongoose);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var AssetSchema = new _mongoose2.default.Schema({
-	       type: {
-	              type: String,
-	              required: false
-	       },
-	       description: {
-	              type: String,
-	              required: false,
-	              unique: false
-	       },
-	       net_value: {
-	              type: Number,
-	              required: false,
-	              unique: false
-	       },
-	       index: {
-	              type: Number,
-	              required: true,
-	              unique: true
-	       }
-	});
-	
-	var Asset = _mongoose2.default.model('Asset', AssetSchema);
-	
-	exports.default = AssetSchema;
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	       value: true
-	});
-	
-	var _mongoose = __webpack_require__(7);
-	
-	var _mongoose2 = _interopRequireDefault(_mongoose);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var StatsSchema = new _mongoose2.default.Schema({
-	       net: {
-	              type: Number,
-	              required: false
-	       },
-	       totalDebt: {
-	              type: Number,
-	              required: false,
-	              unique: false
-	       },
-	       totalAssets: {
-	              type: Number,
-	              required: false,
-	              unique: false
-	       }
-	});
-	
-	var Stats = _mongoose2.default.model('Stats', StatsSchema);
-	
-	exports.default = StatsSchema;
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _passport = __webpack_require__(16);
-	
-	var _passport2 = _interopRequireDefault(_passport);
-	
-	var _passportHttp = __webpack_require__(17);
-	
-	var _passportHttp2 = _interopRequireDefault(_passportHttp);
-	
-	var _passportLocal = __webpack_require__(18);
-	
-	var _passportLocal2 = _interopRequireDefault(_passportLocal);
-	
-	var _userModel = __webpack_require__(10);
-	
-	var _userModel2 = _interopRequireDefault(_userModel);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var BasicStrategy = _passportHttp2.default.BasicStrategy;
-	var LocalStrategy = _passportLocal2.default.Strategy;
-	
-	var strategy = new LocalStrategy('local', function (username, password, done) {
-	  _userModel2.default.findOne({ username: username }, function (err, user) {
-	    if (err) {
-	      return done(err);
-	    }
-	    if (!user) {
-	      return done('{"error":"User does not exist"}', false);
-	    }
-	    user.validatePassword(password, function (err, isValid) {
-	      if (err !== null || !isValid) {
-	        return done('{"error":"Invalid Password"}', false);
-	      }
-	      return done(null, user);
-	    });
-	  });
-	});
-	_passport2.default.serializeUser(function (user, done) {
-	  done(null, user.id);
-	});
-	
-	// used to deserialize the user
-	_passport2.default.deserializeUser(function (id, done) {
-	  _userModel2.default.findById(id, function (err, user) {
-	    done(err, user);
-	  });
-	});
-	
-	_passport2.default.use(strategy);
-	exports.default = _passport2.default;
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	module.exports = require("passport");
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	module.exports = require("passport-http");
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	module.exports = require("passport-local");
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = { DATABASE_URL: 'mongodb://test:test@ds119768.mlab.com:19768/worthysum-mlab',
-	  PORT: process.env.PORT || 3001
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
-
-/***/ },
-/* 20 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -1016,6 +658,363 @@
 	};
 	process.umask = function() { return 0; };
 
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = require("express");
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = require("mongoose");
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("body-parser");
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = require("bcryptjs");
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _mongoose = __webpack_require__(8);
+	
+	var _mongoose2 = _interopRequireDefault(_mongoose);
+	
+	var _bcryptjs = __webpack_require__(10);
+	
+	var _bcryptjs2 = _interopRequireDefault(_bcryptjs);
+	
+	var _networthModel = __webpack_require__(12);
+	
+	var _networthModel2 = _interopRequireDefault(_networthModel);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UserSchema = new _mongoose2.default.Schema({
+	    username: {
+	        type: String,
+	        required: true,
+	        unique: true
+	    },
+	    firstname: {
+	        type: String,
+	        required: false,
+	        unique: false
+	    },
+	    lastname: {
+	        type: String,
+	        required: false,
+	        unique: false
+	    },
+	    password: {
+	        type: String,
+	        required: true
+	    },
+	    currentNetworth: [_networthModel2.default],
+	    netWorth: [{
+	        year: Number,
+	        month: Number,
+	        details: [_networthModel2.default]
+	    }]
+	});
+	
+	UserSchema.methods.validatePassword = function (password, callback) {
+	    _bcryptjs2.default.compare(password, this.password, function (err, isValid) {
+	        if (err) {
+	            callback(err);
+	            return;
+	        }
+	        callback(null, isValid);
+	    });
+	};
+	
+	var User = _mongoose2.default.model('User', UserSchema);
+	
+	exports.default = User;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _mongoose = __webpack_require__(8);
+	
+	var _mongoose2 = _interopRequireDefault(_mongoose);
+	
+	var _liabilityModel = __webpack_require__(13);
+	
+	var _liabilityModel2 = _interopRequireDefault(_liabilityModel);
+	
+	var _assetModel = __webpack_require__(14);
+	
+	var _assetModel2 = _interopRequireDefault(_assetModel);
+	
+	var _statsModel = __webpack_require__(15);
+	
+	var _statsModel2 = _interopRequireDefault(_statsModel);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NetworthSchema = new _mongoose2.default.Schema({
+		liabilities: [_liabilityModel2.default],
+		assets: [_assetModel2.default],
+		stats: [_statsModel2.default]
+	});
+	
+	var Networth = _mongoose2.default.model('Networth', NetworthSchema);
+	
+	exports.default = NetworthSchema;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	       value: true
+	});
+	
+	var _mongoose = __webpack_require__(8);
+	
+	var _mongoose2 = _interopRequireDefault(_mongoose);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var LiabilitySchema = new _mongoose2.default.Schema({
+	       type: {
+	              type: String,
+	              required: false
+	       },
+	       description: {
+	              type: String,
+	              required: false,
+	              unique: false
+	       },
+	       remaining_amount: {
+	              type: Number,
+	              required: false,
+	              unique: false
+	       },
+	       index: {
+	              type: Number,
+	              required: true,
+	              unique: true
+	       }
+	});
+	
+	var Liability = _mongoose2.default.model('Liability', LiabilitySchema);
+	
+	exports.default = LiabilitySchema;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	       value: true
+	});
+	
+	var _mongoose = __webpack_require__(8);
+	
+	var _mongoose2 = _interopRequireDefault(_mongoose);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var AssetSchema = new _mongoose2.default.Schema({
+	       type: {
+	              type: String,
+	              required: false
+	       },
+	       description: {
+	              type: String,
+	              required: false,
+	              unique: false
+	       },
+	       net_value: {
+	              type: Number,
+	              required: false,
+	              unique: false
+	       },
+	       index: {
+	              type: Number,
+	              required: true,
+	              unique: true
+	       }
+	});
+	
+	var Asset = _mongoose2.default.model('Asset', AssetSchema);
+	
+	exports.default = AssetSchema;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	       value: true
+	});
+	
+	var _mongoose = __webpack_require__(8);
+	
+	var _mongoose2 = _interopRequireDefault(_mongoose);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var StatsSchema = new _mongoose2.default.Schema({
+	       net: {
+	              type: Number,
+	              required: false
+	       },
+	       totalDebt: {
+	              type: Number,
+	              required: false,
+	              unique: false
+	       },
+	       totalAssets: {
+	              type: Number,
+	              required: false,
+	              unique: false
+	       }
+	});
+	
+	var Stats = _mongoose2.default.model('Stats', StatsSchema);
+	
+	exports.default = StatsSchema;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _passport = __webpack_require__(17);
+	
+	var _passport2 = _interopRequireDefault(_passport);
+	
+	var _passportHttp = __webpack_require__(18);
+	
+	var _passportHttp2 = _interopRequireDefault(_passportHttp);
+	
+	var _passportLocal = __webpack_require__(19);
+	
+	var _passportLocal2 = _interopRequireDefault(_passportLocal);
+	
+	var _userModel = __webpack_require__(11);
+	
+	var _userModel2 = _interopRequireDefault(_userModel);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var BasicStrategy = _passportHttp2.default.BasicStrategy;
+	var LocalStrategy = _passportLocal2.default.Strategy;
+	
+	var strategy = new LocalStrategy('local', function (username, password, done) {
+	  _userModel2.default.findOne({ username: username }, function (err, user) {
+	    if (err) {
+	      return done(err);
+	    }
+	    if (!user) {
+	      return done('{"error":"User does not exist"}', false);
+	    }
+	    user.validatePassword(password, function (err, isValid) {
+	      if (err !== null || !isValid) {
+	        return done('{"error":"Invalid Password"}', false);
+	      }
+	      return done(null, user);
+	    });
+	  });
+	});
+	_passport2.default.serializeUser(function (user, done) {
+	  done(null, user.id);
+	});
+	
+	// used to deserialize the user
+	_passport2.default.deserializeUser(function (id, done) {
+	  _userModel2.default.findById(id, function (err, user) {
+	    done(err, user);
+	  });
+	});
+	
+	_passport2.default.use(strategy);
+	exports.default = _passport2.default;
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = require("passport");
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = require("passport-http");
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = require("passport-local");
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = { DATABASE_URL: 'mongodb://test:test@ds119768.mlab.com:19768/worthysum-mlab',
+	  PORT: 8089
+	};
 
 /***/ }
 /******/ ])));

@@ -825,7 +825,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	     value: true
 	});
-	exports.default = { DATABASE_URL: process.env.DATABASE_URL || global.DATABASE_URL || (process.env.NODE_ENV === 'production' ? 'mongodb://test:test@ds047666.mlab.com:47666/xml2json-mlab' : 'mongodb://localhost/worthysum-dev'),
+	exports.default = { DATABASE_URL: process.env.DATABASE_URL || global.DATABASE_URL || (process.env.NODE_ENV === 'production' ? 'mongodb://test:test@ds119768.mlab.com:19768/worthysum-mlab' : 'mongodb://localhost/worthysum-dev'),
 	     PORT: process.env.PORT || 3001
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), (function() { return this; }())))

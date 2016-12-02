@@ -14,7 +14,7 @@ function runServer(callback){
 		if(err && callback){
 			return callback(err);
 		}
-
+		console.log('Debug debug port from environmet: '+process.env.PORT);
 		server=app.listen(config.PORT, ()=>{
 			console.log('Listening on localhost:' + config.PORT);
 			if(callback){ 

@@ -4,6 +4,7 @@
   "description": "",
   "main": "build/server.js",
   "scripts": {
+    "start": "node build/server.js",
     "mkdir": "mkdir -p build ",
     "build": "npm run clean && npm run mkdir && npm run build:js && cd client && npm run build && cd ..",
     "watch": "npm run watch:css & npm run watch:js",

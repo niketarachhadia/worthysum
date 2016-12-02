@@ -1,0 +1,15 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: d69a529f-1126-4b4f-b975-a4ec9e87cd8b
+  app: frozen-depths-73790 

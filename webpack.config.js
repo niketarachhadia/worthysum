@@ -9,7 +9,7 @@ var plugins = [new webpack.DefinePlugin({
 					'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
 					'process.env.PORT': JSON.stringify(process.env.PORT || '3001')
 				})];
-
+console.log('DEBUG build'+JSON.stringify(plugins));
 var entryV= {
         "server.js": "./server.js"
     }

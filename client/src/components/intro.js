@@ -8,7 +8,7 @@ class Intro extends Component {
 		<Row>
 			<Col l={3} m={3} s={6} className="offset-l5 offset-m5 offset-s2">
 					<a href="#/login" className="waves-effect waves-light btn-large purple darken-3">
-						   <i className="material-icons left">work</i> Let's Calculate Your Networh
+						   <i className="material-icons left">work</i> Track Networh
 					</a>
 				</Col>
 		</Row>

@@ -21,16 +21,28 @@ class Chart extends Component {
 		let color = scaleOrdinal()
 		  .range(["#ce93d8", "#9c27b0"]);
 		return (
-			<Row>
-				<Col className="white-text center-align s4 m4 l4">
+			<Row className="center-align">
+				<Col className="collection">
+						<li className="collection-item purple lighten-3">
+							<span >Loans</span>
+						</li>
+						
+						<li className="collection-item purple darken-2">
+							<span >Assets</span>
+						</li>
+					
+				</Col>
+				<Col className="white-text left-align s4 m4 l4">
 					<PieChart
 					  data={pieData}
-					  width={450}
+					  width={180}
 					  height={130} 
 					  radius={60}
 					  innerRadius={5}
 					  sectorBorderColor="white"
 					  colors={color}
+					  showOuterLabels={false}
+					  showInnerLabels={true}
 					  />
 				</Col>
 			</Row>

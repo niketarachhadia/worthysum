@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Card,  Col } from 'react-materialize';
+import { Row, Card,  Col,Button ,Icon } from 'react-materialize';
 import {connect} from 'react-redux';
 import {loginApi} from '../redux/loginactions';
 import {push} from 'react-router-redux';
@@ -68,9 +68,7 @@ class Login extends Component {
 	</Row>
 	<Row>
 		<Col l={2} m={2} s={6} className="offset-l3 offset-m3">
-			<a href="#" className="waves-effect waves-light btn purple lighten-3" onClick={this.login.bind(this)}>
-					   <i className="material-icons left">vpn_key</i>Login
-			</a>
+			<a href="#" className="waves-effect waves-light btn purple lighten-3 " onClick={this.login.bind(this)}>Login</a>
 		</Col>
 	</Row>
 	</div>

@@ -24,12 +24,13 @@ class Navigation extends Component {
   }
   logOut(event) {
 	  event.preventDefault();
-	  const promise=this.props.dispatch(
+	  const retVal=this.props.dispatch(
             logoutApi()
         );
-	  promise.then(function(data){
-			this.props.dispatch(push('/'))
-		}.bind(this));
+	  if(retVal.type="LOGOUT"){
+		  this.props.dispatch(push('/intro'))
+	  }
+	  
   }
   render() {
     return (

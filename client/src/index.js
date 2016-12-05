@@ -9,7 +9,7 @@ import Intro from './components/intro';
 import {Provider} from 'react-redux';
 import store from './store';
 import { syncHistoryWithStore} from 'react-router-redux';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory,Redirect,IndexRedirect  } from 'react-router';
 
 const history = syncHistoryWithStore(hashHistory, store)
 var routes = (
@@ -21,6 +21,7 @@ var routes = (
 			  <Route path="/login" component={AuthContainer} />
 			  <Route path="/home" component={Networth} />
 			  <Route path="/intro" component={Intro} />
+			  <IndexRedirect to="/intro" />
 			</Route>
 		  </Router>
 	</Provider>

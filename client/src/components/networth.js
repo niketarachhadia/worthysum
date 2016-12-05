@@ -29,7 +29,7 @@ class Networth extends Component {
 		}			 
 	}
 	handleAssetUpdate(index,event) {	
-		if(event && ((event.type=="keydown" && event.keyCode == 13) || event.type=="blur")){
+		if(event && ((event.type=="keydown" && event.keyCode == 13) || event.type=="blur" || event.type=="change")){
 			let idParam=event.target.id.substr(0, event.target.id.indexOf('-'));
 			let updateObj={
 			index:index,
@@ -66,7 +66,7 @@ class Networth extends Component {
 		}			 
 	}
 	handleLiabilityUpdate(index,event) {	
-		if(event && ((event.type=="keydown" && event.keyCode == 13) || event.type=="blur")){
+		if(event && ((event.type=="keydown" && event.keyCode == 13) || event.type=="blur" || event.type=="change")){
 			let idParam=event.target.id.substr(4);
 			idParam=idParam.substr(0, idParam.indexOf('-'));
 			let updateObj={
@@ -93,7 +93,7 @@ class Networth extends Component {
     return (
       <div id="networth">
 			<Row>
-				<Col l={6} m={6} s={12}>
+				<Col l={6} m={6} s={12} className="center-align">
 					<Chart networth={this.props.networth.stats}/>
 				</Col>
 				<Col l={6} m={6} s={12}>

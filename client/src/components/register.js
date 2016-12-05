@@ -87,9 +87,7 @@ class Register extends Component {
 	</Row>
 	<Row>
 		<Col l={2} m={2} s={6} className="offset-l3 offset-m3">
-			<a href="#" className="waves-effect waves-light btn purple lighten-3" onClick={this.register.bind(this)}>
-					   <i className="material-icons left">perm_identity</i> Submit
-			</a>
+			<a href="#" className="waves-effect waves-light btn purple lighten-3" onClick={this.register.bind(this)}>Submit</a>
 		</Col>
 	</Row>
 	</div>

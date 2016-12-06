@@ -40,7 +40,12 @@ let urlParser=bodyParser.urlencoded({
 app.use(jsonParser);
 app.use(urlParser);
 app.use(passport.initialize());
-app.use(express.static('client/build'))
+app.use(express.static('client/build'));
+app.use(function(err, req, res, next) {
+  // Do logging and user-friendly error message display
+  console.error(err);
+  res.status(500).send({status:500, error: err, type:'internal'});
+});
 app.post('/login', passport.authenticate('local',{ failWithError: true }),
 	function(req, res) {
 		let username = req.body.username;

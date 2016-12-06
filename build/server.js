@@ -114,6 +114,11 @@
 	app.use(urlParser);
 	app.use(_passport2.default.initialize());
 	app.use(_express2.default.static('client/build'));
+	app.use(function (err, req, res, next) {
+		// Do logging and user-friendly error message display
+		console.error(err);
+		res.status(500).send({ status: 500, error: err, type: 'internal' });
+	});
 	app.post('/login', _passport2.default.authenticate('local', { failWithError: true }), function (req, res) {
 		var username = req.body.username;
 		_userModel2.default.findOne({ username: username }, function (err, user) {

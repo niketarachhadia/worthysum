@@ -36,21 +36,25 @@ var register = function(user) {
             if (response.status < 200 || response.status >= 300) {
                 var error = new Error(response.statusText)
                 error.response = response
+				console.error('DEBUG DEBUG client side 1: '+error);
                 throw error;
             }
             return response;
         })
         .then(function(response) {
+			console.error('DEBUG DEBUG client side 2: ');
             return response.json();
         })
         .then(function(data) {
 			if(data !== undefined && data.username){
+				console.error('DEBUG DEBUG client side 3: '+data.username);
 				user.email=data.username;
 				user.firstname=data.firstname;
 				user.lastname=data.lastname;
 				return dispatch( registerSuccess(user));
 			}else{
 				var errMsg=JSON.parse(data).error;
+				console.error('DEBUG DEBUG client side 4: '+errMsg);
 				return dispatch(
 					registerError(errMsg)
 				);
@@ -58,6 +62,8 @@ var register = function(user) {
             
         })
         .catch(function(error) {
+			console.error('DEBUG DEBUG client side 5: '+error.message);
+			console.error('DEBUG DEBUG client side 6: '+error);
             return dispatch(
                 registerError(error.message)
             );

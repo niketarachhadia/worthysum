@@ -116,7 +116,7 @@
 	app.use(_express2.default.static('client/build'));
 	app.use(function (err, req, res, next) {
 		// Do logging and user-friendly error message display
-		console.error(err);
+		console.error('DEBUG DEBUG error handling: ' + err);
 		res.status(500).send({ status: 500, error: err, type: 'internal' });
 	});
 	app.post('/login', _passport2.default.authenticate('local', { failWithError: true }), function (req, res) {
@@ -143,7 +143,7 @@
 		}
 	
 		var username = req.body.username;
-	
+		console.error('DEBUG DEBUG users post 1: ' + username);
 		if (typeof username !== 'string') {
 			return res.status(422).json({
 				message: 'Incorrect field type: username'
@@ -165,7 +165,7 @@
 		}
 	
 		var password = req.body.password;
-	
+		console.error('DEBUG DEBUG users post 2: ' + password);
 		if (typeof password !== 'string') {
 			return res.status(422).json({
 				message: 'Incorrect field type: password'
@@ -182,19 +182,22 @@
 	
 		_bcryptjs2.default.genSalt(10, function (err, salt) {
 			if (err) {
+				console.error('DEBUG DEBUG users post 3: ' + err);
 				return res.status(500).json({
 					message: 'salt error' + err
 				});
 			}
 			_bcryptjs2.default.hash(password, salt, function (err, hash) {
 				if (err) {
+					console.error('DEBUG DEBUG users post 4: ' + err);
 					return res.status(500).json({
 						message: 'encryption error' + err
 					});
 				}
 				var firstname = req.body.firstname;
 				var lastname = req.body.lastname;
-	
+				console.error('DEBUG DEBUG users post 5: ' + firstname);
+				console.error('DEBUG DEBUG users post 6: ' + lastname);
 				var initialNetworth = [{
 					assets: [{
 						type: "",
@@ -228,6 +231,7 @@
 				});
 				user.save(function (err) {
 					if (err) {
+						console.error('DEBUG DEBUG users post 7: ' + err);
 						return res.status(500).json({
 							message: 'Database Error'
 						});

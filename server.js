@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(express.static('client/build'));
 app.use(function(err, req, res, next) {
   // Do logging and user-friendly error message display
-  console.error(err);
+  console.error('DEBUG DEBUG error handling: '+err);
   res.status(500).send({status:500, error: err, type:'internal'});
 });
 app.post('/login', passport.authenticate('local',{ failWithError: true }),
@@ -65,7 +65,7 @@ app.post('/users',  (req, res)=>{
             message: "No request body"
         });
     }
-
+	
     if (!('username' in req.body)) {
         return res.status(422).json({
             message: 'Missing field: username'
@@ -73,7 +73,7 @@ app.post('/users',  (req, res)=>{
     }
 
     let username = req.body.username;
-
+	console.error('DEBUG DEBUG users post 1: '+username);
     if (typeof username !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: username'
@@ -93,9 +93,9 @@ app.post('/users',  (req, res)=>{
             message: 'Missing field: password'
         });
     }
-
+	
     let password = req.body.password;
-
+console.error('DEBUG DEBUG users post 2: '+password);
     if (typeof password !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: password'
@@ -112,19 +112,22 @@ app.post('/users',  (req, res)=>{
 
 	bcrypt.genSalt(10, (err, salt)=> {
         if (err) {
+			console.error('DEBUG DEBUG users post 3: '+err);
             return res.status(500).json({
                 message: 'salt error'+err
             });
         }
 		bcrypt.hash(password, salt, function(err, hash) {
             if (err) {
+				console.error('DEBUG DEBUG users post 4: '+err);
                 return res.status(500).json({
                     message: 'encryption error'+err
                 });
             }
 			let firstname = req.body.firstname;
 			let lastname = req.body.lastname;
-			
+			console.error('DEBUG DEBUG users post 5: '+firstname);
+			console.error('DEBUG DEBUG users post 6: '+lastname);
 			let initialNetworth=[{
 				assets:[{
 					type:"",
@@ -158,6 +161,7 @@ app.post('/users',  (req, res)=>{
 			});
 			user.save((err)=>{
 				if (err) {
+					console.error('DEBUG DEBUG users post 7: '+err);
 					return res.status(500).json({
 						message: 'Database Error'
 					});

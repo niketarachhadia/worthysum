@@ -18,7 +18,7 @@ const AssetSchema = new mongoose.Schema({
 	index: {
         type: Number,
         required: true,
-        unique: true
+        unique: false
     }
 });
 

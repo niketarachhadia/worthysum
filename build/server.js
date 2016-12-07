@@ -660,7 +660,7 @@
 	       index: {
 	              type: Number,
 	              required: true,
-	              unique: true
+	              unique: false
 	       }
 	});
 	
@@ -702,7 +702,7 @@
 	       index: {
 	              type: Number,
 	              required: true,
-	              unique: true
+	              unique: false
 	       }
 	});
 	

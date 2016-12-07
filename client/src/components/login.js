@@ -32,20 +32,18 @@ class Login extends Component {
 	  promise.then(function(data){
 			if(data.type==="LOGIN_SUCCESS"){
 				this.props.dispatch(push('/home'))
-			}else{
-				this.props.dispatch(push('/loginerror'))
 			}
 			
 		}.bind(this));
-	  console.log('Call login action here');
   }
   render() {
     return (
 	<div className="l12 m12 s12 card card-content white-text purple darken-2 center-align">
 		<p className="center-align">Login</p>
       <Row l={12} m={12} s={12}>
-		<Col className="offset-l3 offset-m3">
-			<div>
+
+		<div className="col center-align s12 m6 l6 offset-l3 offset-m3">
+			
 				
 				<input type="email"
 				  placeholder="Email Address"
@@ -61,15 +59,15 @@ class Login extends Component {
 				  onChange={this.handleChange.bind(this)} 
 				  />
 				
-			</div>
 			
-		</Col>
+			
+		</div>
 		
 	</Row>
 	<Row>
-		<Col l={2} m={2} s={6} className="offset-l3 offset-m3">
+		<div className="col card-action center-align s12 m12 l12">
 			<a href="#" className="waves-effect waves-light btn purple lighten-3 " onClick={this.login.bind(this)}>Login</a>
-		</Col>
+		</div>
 	</Row>
 	</div>
     );

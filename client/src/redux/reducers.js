@@ -18,7 +18,8 @@ var loginReducer = function(state, action) {
         return action.user;
     }else if (action.type === loginActions.LOGIN_ERROR) {
         return {
-            error: action.error
+            error: action.error,
+			message:''
         };
     }else if (action.type === loginActions.LOGOUT) {
         return User;
@@ -31,7 +32,7 @@ var registrationReducer = function(state, action) {
 	if (action.type === registerActions.REGISTER) {
         return action.user;
     }else if (action.type === registerActions.REGISTER_SUCCESS) {
-        return action.user;
+        return {message:action.message,error:''};
     }else if (action.type === registerActions.REGISTER_ERROR) {
         return {
             error: action.error

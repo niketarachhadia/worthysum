@@ -33,8 +33,6 @@ class Register extends Component {
 	  promise.then(function(data){
 			if(data.type==="REGISTER_SUCCESS"){
 				this.props.dispatch(push('/login'))
-			}else{
-				this.props.dispatch(push('/loginerror'))
 			}
 			
 		}.bind(this));
@@ -45,8 +43,8 @@ class Register extends Component {
 	<div id="register" className="l12 m12 s12 card card-content white-text purple darken-2 center-align">
 		<p className="center-align">Register</p>
       <Row>
-		<Col l={6} m={6} s={12} className="offset-l3 offset-m3">
-			<div>
+		<div className="col center-align s12 m6 l6 offset-l3 offset-m3">
+			
 				
 				<input type="email"
 				  placeholder="Email Address"
@@ -80,15 +78,15 @@ class Register extends Component {
 				  onChange={this.handleChange.bind(this)} 
 				  />
 				
-			</div>
 			
-		</Col>
+			
+		</div>
 		
 	</Row>
 	<Row>
-		<Col l={2} m={2} s={6} className="offset-l3 offset-m3">
+		<div className="col card-action center-align s12 m12 l12">
 			<a href="#" className="waves-effect waves-light btn purple lighten-3" onClick={this.register.bind(this)}>Submit</a>
-		</Col>
+		</div>
 	</Row>
 	</div>
     );

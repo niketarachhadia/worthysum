@@ -5,7 +5,8 @@ var REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 var registerSuccess = function(user) {
     return {
         type: REGISTER_SUCCESS,
-        user: user
+        user: user,
+		message:'Registration Complete'
     }
 };
 var REGISTER_ERROR = 'REGISTER_ERROR';

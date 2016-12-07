@@ -1,12 +1,42 @@
 import React, { Component } from 'react';
-import {Row,Col} from 'react-materialize';
+import {Row,Col,Card} from 'react-materialize';
 import {connect} from 'react-redux';
 import Login from './login';
 import Register from './register';
 class AuthContainer extends Component {
-	
+  renderError(error){
+	  if(error && error.trim().length>0){
+		  return <Row>
+					<Col className="offset-l3 offset-m3" l={6} m={6} s={12}>
+						<Card className='orange darken-1' key="1" title='Error'>
+							<p>{this.props.error}</p>
+						</Card>
+						
+					  </Col>
+				</Row>
+	  }else{
+		  return <div/>
+	  }
+  }
+  renderConfirm(confirmMsg){
+	  if(confirmMsg && confirmMsg.trim().length>0){
+		  return <Row>
+					<Col className="offset-l3 offset-m3" l={6} m={6} s={12}>
+						<Card className='green lighten-1' key="1" title='Confirmation'>
+							<p>{this.props.confirmMsg}</p>
+						</Card>
+						
+					  </Col>
+				</Row>
+	  }else{
+		  return <div/>
+	  }
+  }
   render() {
     return (
+	<Row>
+	  {this.renderError(this.props.error)}
+	  {this.renderConfirm(this.props.confirmMsg)}
       <Row id="loginRegisterModal">
 		<Col l={6} m={6} s={12}>
 			<Login/>
@@ -15,8 +45,25 @@ class AuthContainer extends Component {
 			<Register/>
 		</Col>
 	  </Row>
+	</Row>
     );
   }
 }
 
-export default AuthContainer;
+const mapStateToProps = (state, ownProps) => {
+  let errorMsg='';
+  let confirmMsg='';
+  if(state.loginReducer.error){
+	  errorMsg=state.loginReducer.error;
+  }
+  if(state.registrationReducer.error){
+	  errorMsg=state.registrationReducer.error;
+  }
+  if(state.registrationReducer.message){
+	  confirmMsg=state.registrationReducer.message;
+  }
+  return {error:errorMsg,confirmMsg:confirmMsg}
+}
+
+const Container = connect(mapStateToProps)(AuthContainer);
+export default Container;

@@ -15,15 +15,15 @@ numFormatter(num,n, x) {
 	  {label: 'Tim', value: 25.0 }]
     return (
 		<Row>
-			<Col className="card card-content white-text purple darken-2 center-align s4 m4 l4">
+			<Col className="white-text purple darken-2 center-align s6 m4 l4 offset-s3">
 				<p className="center-align"><i className="material-icons">trending_up</i>Current Net Worth</p>
 				<h4 className="center-align">${this.numFormatter(this.props.networth.net)}</h4>
 			</Col>
-			<Col className="card card-content white-text purple darken-2 center-align s4 m4 l4">
+			<Col className="white-text purple darken-2 center-align s6 m4 l4 offset-s3">
 				<p className="center-align"><i className="material-icons">trending_up</i>Total Debt</p>
 				<h4 className="center-align">${this.numFormatter(this.props.networth.totalDebt)}</h4>
 			</Col>
-			<Col className="card card-content white-text purple darken-2 center-align s4 m4 l4">
+			<Col className="white-text purple darken-2 center-align s6 m4 l4 offset-s3">
 				<p className="center-align"><i className="material-icons">trending_up</i>Total Assets</p>
 				<h4 className="center-align">${this.numFormatter(this.props.networth.totalAssets)}</h4>
 			</Col>

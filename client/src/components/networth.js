@@ -93,10 +93,7 @@ class Networth extends Component {
     return (
       <div id="networth">
 			<Row>
-				<Col l={6} m={6} s={12} className="center-align">
-					<Chart networth={this.props.networth.stats}/>
-				</Col>
-				<Col l={6} m={6} s={12}>
+				<Col l={6} m={6} s={12} className="offset-l3 offset-m3">
 					<Stats networth={this.props.networth.stats}/>
 				</Col>
 			</Row>
@@ -108,6 +105,11 @@ class Networth extends Component {
 					<AssetContainer assets={this.props.networth.assets} onChange={this.handleAssetChange.bind(this)} onRemove={this.handleAssetRemove.bind(this)} onSave={this.handleAssetUpdate.bind(this)}/>
 				</Col>
 			</Row>	
+			<Row>
+				<Col l={6} m={6} s={12} className="offset-l4 offset-m4 hide-on-small-only">
+					<Chart networth={this.props.networth.stats}/>
+				</Col>
+			</Row>
 			
 		</div>
     );

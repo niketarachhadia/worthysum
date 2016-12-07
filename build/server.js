@@ -131,73 +131,52 @@
 	
 	app.post('/users', function (req, res) {
 		if (!req.body) {
-			return res.status(400).json({
-				message: "No request body"
-			});
+			return res.json('{"error":"Invalid Request"}');
 		}
 	
 		if (!('username' in req.body)) {
-			return res.status(422).json({
-				message: 'Missing field: username'
-			});
+			return res.json('{"error":"Email is required"}');
 		}
 	
 		var username = req.body.username;
-		console.error('DEBUG DEBUG users post 1: ' + username);
 		if (typeof username !== 'string') {
-			return res.status(422).json({
-				message: 'Incorrect field type: username'
-			});
+			return res.json('{"error":"Invalid Email"}');
 		}
 	
 		username = username.trim();
 	
 		if (username === '') {
-			return res.status(422).json({
-				message: 'Incorrect field length: username'
-			});
+			return res.json('{"error":"Invalid Email"}');
 		}
 	
 		if (!('password' in req.body)) {
-			return res.status(422).json({
-				message: 'Missing field: password'
-			});
+			return res.json('{"error":"Missing Password"}');
 		}
 	
 		var password = req.body.password;
-		console.error('DEBUG DEBUG users post 2: ' + password);
 		if (typeof password !== 'string') {
-			return res.status(422).json({
-				message: 'Incorrect field type: password'
-			});
+			return res.json('{"error":"Invalid Password"}');
 		}
 	
 		password = password.trim();
 	
 		if (password === '') {
-			return res.status(422).json({
-				message: 'Incorrect field length: password'
-			});
+			return res.json('{"error":"Invalid Password"}');
 		}
 	
 		_bcryptjs2.default.genSalt(10, function (err, salt) {
 			if (err) {
-				console.error('DEBUG DEBUG users post 3: ' + err);
-				return res.status(500).json({
-					message: 'salt error' + err
-				});
+				console.error('Encryption Error: ' + err);
+				return res.json('{"error":"Server Error. Notify your administrator to verify logs"}');
 			}
 			_bcryptjs2.default.hash(password, salt, function (err, hash) {
 				if (err) {
-					console.error('DEBUG DEBUG users post 4: ' + err);
-					return res.status(500).json({
-						message: 'encryption error' + err
-					});
+					console.error('Encryption Error: ' + err);
+					return res.json('{"error":"Server Error. Notify your administrator to verify logs"}');
 				}
 				var firstname = req.body.firstname;
 				var lastname = req.body.lastname;
-				console.error('DEBUG DEBUG users post 5: ' + firstname);
-				console.error('DEBUG DEBUG users post 6: ' + lastname);
+	
 				var initialNetworth = [{
 					assets: [{
 						type: "",
@@ -231,12 +210,8 @@
 				});
 				user.save(function (err) {
 					if (err) {
-						console.error('DEBUG DEBUG users post 7: ' + err);
-						return res.status(500).json({
-							message: 'Database Error'
-						});
+						return res.json('{"error":"User already exists"}');
 					}
-					console.log("DEBUG with init networh " + JSON.stringify(user));
 					return res.status(201).json(user);
 				});
 			});

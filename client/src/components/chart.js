@@ -22,23 +22,23 @@ class Chart extends Component {
 		  .range(["#ce93d8", "#9c27b0"]);
 		return (
 			<Row className="center-align">
-				<Col className="collection">
-						<li className="collection-item purple lighten-3">
+				<Col>
+						<Row className="white-text purple lighten-3">
 							<span >Loans</span>
-						</li>
+						</Row>
 						
-						<li className="collection-item purple darken-2">
-							<span >Assets</span>
-						</li>
+						<Row className="white-text purple darken-2">
+							<span >Net Worth</span>
+						</Row>
 					
 				</Col>
 				<Col className="white-text left-align s4 m4 l4">
 					<PieChart
 					  data={pieData}
-					  width={180}
-					  height={130} 
-					  radius={60}
-					  innerRadius={5}
+					  width={300}
+					  height={300} 
+					  radius={150}
+					  innerRadius={20}
 					  sectorBorderColor="white"
 					  colors={color}
 					  showOuterLabels={false}

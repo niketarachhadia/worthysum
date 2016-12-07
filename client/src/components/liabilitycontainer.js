@@ -7,7 +7,7 @@ class LiabilityContainer extends Component {
 	
   render() {
     return (
-      <div id="liabilities" className="card card-content white-text purple lighten-3">
+      <div id="liabilities" className="white-text purple lighten-3">
 		<Row className="center-align">
 			<span className="card-title center-align">Loans</span>
 		</Row>

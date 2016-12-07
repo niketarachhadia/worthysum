@@ -8,7 +8,7 @@ class AssetContainer extends Component {
 	
   render() {
     return (
-      <div id="assets" className="card card-content white-text purple lighten-3">
+      <div id="assets" className="white-text purple lighten-3">
 		<Row className="center-align">
 			<span className="card-title center-align">Assets</span>
 		</Row>		

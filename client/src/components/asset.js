@@ -18,7 +18,7 @@ class Asset extends Component {
 					})}
 				  </Input>
 			</Col>
-		<Col s={4} l={4} m={4}>
+		<Col s={3} l={3} m={3}>
 			<Input type="text" s={12} m={12} l={12}
 			  label="Description"
 			  id={'description-'+this.props.id}
@@ -38,7 +38,7 @@ class Asset extends Component {
 			  className="valign"
 			  />
 		</Col>
-		<Col s={1} l={1} m={1}>
+		<Col s={2} l={2} m={2}>
 			 <a className="btn-floating btn-small waves-effect waves-light purple lighten-3 valign" onClick={this.props.onRemove.bind(null,this.props.id)}><i className="material-icons">delete</i></a>
 		</Col>
 		</Row>

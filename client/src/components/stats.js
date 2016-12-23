@@ -16,16 +16,16 @@ numFormatter(num,n, x) {
     return (
 		<Row>
 			<Col className="white-text purple darken-2 center-align s6 m4 l4 offset-s3">
-				<p className="center-align"><i className="material-icons">trending_up</i>Current Net Worth</p>
-				<h4 className="center-align">${this.numFormatter(this.props.networth.net)}</h4>
+				<span className="center-align"><i className="material-icons">trending_up</i>Current Net Worth</span>
+				<h5 className="center-align">${this.numFormatter(this.props.networth.net)}</h5>
 			</Col>
 			<Col className="white-text purple darken-2 center-align s6 m4 l4 offset-s3">
-				<p className="center-align"><i className="material-icons">trending_up</i>Total Debt</p>
-				<h4 className="center-align">${this.numFormatter(this.props.networth.totalDebt)}</h4>
+				<span className="center-align"><i className="material-icons">trending_up</i>Total Debt</span>
+				<h5 className="center-align">${this.numFormatter(this.props.networth.totalDebt)}</h5>
 			</Col>
 			<Col className="white-text purple darken-2 center-align s6 m4 l4 offset-s3">
-				<p className="center-align"><i className="material-icons">trending_up</i>Total Assets</p>
-				<h4 className="center-align">${this.numFormatter(this.props.networth.totalAssets)}</h4>
+				<span className="center-align"><i className="material-icons">trending_up</i>Total Assets</span>
+				<h5 className="center-align">${this.numFormatter(this.props.networth.totalAssets)}</h5>
 			</Col>
 		</Row>
     );

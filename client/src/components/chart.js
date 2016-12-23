@@ -28,7 +28,7 @@ class Chart extends Component {
 						</Row>
 						
 						<Row className="white-text purple darken-2">
-							<span >Net Worth</span>
+							&nbsp;<span >Net Worth</span>&nbsp;
 						</Row>
 					
 				</Col>

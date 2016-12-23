@@ -34,8 +34,8 @@ class Navigation extends Component {
   }
   render() {
     return (
-      <div className="navbar-fixed">
-		<nav className="purple lighten-3">
+      <div className="row navbar-fixed">
+		<nav className="purple lighten-3 col l10 m10 offset-l1 offset-m1 offset-s1 s10">
 		  <div className="nav-wrapper">
 					<a href="#/" className="brand-logo">
 						<img className="responsive-img"  src={'./wslogo.png'} alt="Logo" />

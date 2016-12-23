@@ -91,7 +91,8 @@ class Networth extends Component {
 	}
   render() {
     return (
-      <div id="networth">
+	<Row>
+      <div id="networth" className="col l10 m10 offset-l1 offset-m1 offset-s1 s10">
 			<Row>
 				<Col l={6} m={6} s={12} className="offset-l3 offset-m3">
 					<Stats networth={this.props.networth.stats}/>
@@ -106,12 +107,13 @@ class Networth extends Component {
 				</Col>
 			</Row>	
 			<Row>
-				<Col l={6} m={6} s={12} className="offset-l4 offset-m4 hide-on-small-only">
+				<Col l={6} m={6} s={12} className="offset-l3 offset-m3 hide-on-small-only">
 					<Chart networth={this.props.networth.stats}/>
 				</Col>
 			</Row>
 			
 		</div>
+	</Row>
     );
   }
 }

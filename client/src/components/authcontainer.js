@@ -37,14 +37,16 @@ class AuthContainer extends Component {
 	<Row>
 	  {this.renderError(this.props.error)}
 	  {this.renderConfirm(this.props.confirmMsg)}
-      <Row id="loginRegisterModal">
-		<Col l={6} m={6} s={12}>
-			<Login/>
-		</Col>
-		<Col l={6} m={6} s={12}>
-			<Register/>
-		</Col>
-	  </Row>
+	  <Col className="l10 m10 offset-l1 offset-m1 offset-s1 s10">
+		  <Row id="loginRegisterModal">
+			<Col l={6} m={6} s={12}>
+				<Login/>
+			</Col>
+			<Col l={6} m={6} s={12}>
+				<Register/>
+			</Col>
+		  </Row>
+		 </Col>
 	</Row>
     );
   }

@@ -46,6 +46,16 @@ class AuthContainer extends Component {
 				<Register/>
 			</Col>
 		  </Row>
+		  <Row>
+			<Col className="offset-l3 offset-m3" l={6} m={6} s={12}>
+				<Card className='green lighten-1' key="1" title='Dont want to register?'>
+					<p>Use these credentials to login to demo account</p>
+					<p>Username: demo@demo.com</p>
+					<p>Password: demo</p>
+				</Card>
+				
+			  </Col>
+		  </Row>
 		 </Col>
 	</Row>
     );
